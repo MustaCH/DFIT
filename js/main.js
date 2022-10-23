@@ -99,19 +99,19 @@ if (meta == 1){
 		break;
 	}
 	}else if (meta == 2){
-		parseInt(prompt("Indicanos que tan rápido deseas conseguir tu objetivo de ganar músculo:\n1- Lento\n2- Moderado\n3- Rápido\n\n(Ten en cuenta que la opción 3 rápido es recomendable para personas que tengan dificultad para ganar peso, ya sea tanto en músculo como en grasa. Si éste no es tu caso, te recomendamos las opciones 1 o 2, ésto con el fin de evitar que tengas un aumento de grasa significativo en tu proceso de aumento de masa muscular y debas pasar por un proceso de definicion extenso para lograr que tus ganancias se luzcan como todos queremos. Elije inteligentemente"))
+		final = parseInt(prompt("Indicanos que tan rápido deseas conseguir tu objetivo de ganar músculo:\n1- Lento\n2- Moderado\n3- Rápido\n\n(Ten en cuenta que la opción 3 rápido es recomendable para personas que tengan dificultad para ganar peso, ya sea tanto en músculo como en grasa. Si éste no es tu caso, te recomendamos las opciones 1 o 2, ésto con el fin de evitar que tengas un aumento de grasa significativo en tu proceso de aumento de masa muscular y debas pasar por un proceso de definicion extenso para lograr que tus ganancias se luzcan como todos queremos. Elije inteligentemente"))
 		switch (final){
 			case 1:
 			velocidad = peso*absoluto*carga*1.10;
-			alert (peso*absoluto*carga-velocidad + " " + "calorías diarias es lo que debes consumir para lograr tu objetivo")
+			alert (peso*absoluto*carga+velocidad + " " + "calorías diarias es lo que debes consumir para lograr tu objetivo")
 			break;
 			case 2:
 			velocidad = peso*absoluto*carga*1.15;
-			alert (peso*absoluto*carga-velocidad + " " + "calorías diarias es lo que debes consumir para lograr tu objetivo")
+			alert (peso*absoluto*carga+velocidad + " " + "calorías diarias es lo que debes consumir para lograr tu objetivo")
 			break;
 			case 3:
 			velocidad = peso*absoluto*carga*1.20;
-			alert (peso*absoluto*carga-velocidad + " " + "calorías diarias es lo que debes consumir para lograr tu objetivo")
+			alert (peso*absoluto*carga+velocidad + " " + "calorías diarias es lo que debes consumir para lograr tu objetivo")
 			break;
 		}
 	}
