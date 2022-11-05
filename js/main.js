@@ -9,21 +9,44 @@ let salir= false;
 
 alert ("Hola, bienvenido a DFit, tu contador de calorías")
 
-nombre = prompt("Nos gustaría saber tu nombre.\nComo te llamas?");
+while (salir != true){
+	nombre = prompt("Nos gustaría saber tu nombre.\nComo te llamas?");
+	if (nombre != ""){
+		salir=true
+	}
+}
 
 edad = parseInt(prompt("Hola"+ " " + nombre + "!" + " Indicanos tu edad:"))
-while (edad < 18){
-	alert ("Debes que ser mayor de 18 años para tomar decisiones en cuanto a tu alimentación basados en éste tipo de analisis sencillo. Es por tu salud.")
-	edad = parseInt(prompt("Indicanos tu edad:"))
+for (salir = false; salir = true;){
+	if (edad >= 18){
+		salir = true
+		break;	
+	}else if (edad < 18){
+		alert ("Debes que ser mayor de 18 años para tomar decisiones en cuanto a tu alimentación basados en éste tipo de analisis sencillo. Es por tu salud.")
+		edad = parseInt(prompt("Indicanos tu edad:"))
+	}else{
+		alert("Opción no válida.")
+		edad = parseInt(prompt("Indicanos tu edad:"))
+	}
 }
 
+salir=false
 peso= parseInt(prompt("Para empezar, indicanos cual es tu peso actual (No vale mentir)"));
-while (peso < 30){
-	peso= parseInt(prompt("El peso que indicaste es demasiado bajo!! \nIndicanos cual es tu peso actual (No vale mentir)"));
+for (salir = false; salir = true;){
+	if (peso > 30){
+		salir = true
+		break;	
+	}else if (peso < 30){
+		alert ("El peso que indicaste es demasiado bajo!! \nIndicanos cual es tu peso actual (No vale mentir)")
+		peso = parseInt(prompt("Indicanos tu peso actual:"))
+	}else{
+		alert("Opción no válida.")
+		peso = parseInt(prompt("Indicanos tu peso actual:"))
+	}
 }
 
 
-
+salir=false
 function basales (peso,absoluto,carga){
 	while (salir != true){
 		let actividad= parseInt(prompt("Ahora indicanos cual es tu nivel de actividad \n1- Poco o nada de ejercicio \n2- Entrenamiento ligero (1-3 veces por semana) \n3- Entrenamiento moderado (3-4 veces por semana) \n4- Entrenamiento fuerte (5-7 veces por semana) \n5- Entrenamiento muy fuerte (6 o más y dobles sesiones diarias por semana"))
@@ -138,21 +161,28 @@ class usuario {
 		this.calsFinales = calsFinales;
 	}
 	datosUsuario(){
-		console.log("Datos del usuario" + " " + this.nombre + " " + this.edad + " años" + " " + this.peso + "kg")
+		console.log("Datos del usuario:" + " " + this.nombre + " " + this.edad + " años" + " " + this.peso + "kg")
 	}
 }
 
 listaUsuarios.push(nuevoUsuario = new usuario (nombre, edad, peso, calsBase, meta, calsFinales));
-listaUsuarios.push(nuevoUsuario = new usuario ("Pedro", 28, 98, 2500, 1, 2000))
-listaUsuarios.push(nuevoUsuario = new usuario ("Manuel", 50, 73, 2241, 2, 2741))
-listaUsuarios.push(nuevoUsuario = new usuario ("Manuel", 37, 81, 2635, 2, 3120))
+listaUsuarios.push(usuario1 = new usuario ("Pedro", 28, 98, 2500, 1, 2000));
+listaUsuarios.push(usuario2 = new usuario ("Manuel", 50, 73, 2241, 2, 2741));
+listaUsuarios.push(usuario3 = new usuario ("Ricardo", 37, 81, 2635, 2, 3120));
 
-nuevoUsuario.datosUsuario();
+nuevoUsuario.datosUsuario([0]);
 
 console.log(listaUsuarios);
 
+const findUsuario = listaUsuarios.find((usuario)=>usuario.nombre==="Pedro");
+const userMeta = listaUsuarios.filter((usuario)=>usuario.meta===1);
+const listaCals = listaUsuarios.map(usuario => usuario.peso);
 
-alert ("Gracias por usar DFit!")
+console.log(findUsuario);
+console.log(userMeta);
+console.log(listaCals);
+
+alert ("Gracias por usar DFit!");
 
 
 
