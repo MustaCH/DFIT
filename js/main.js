@@ -183,8 +183,3 @@ console.log(userMeta);
 console.log(listaCals);
 
 alert ("Gracias por usar DFit!");
-
-
-
-
-
