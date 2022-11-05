@@ -1,30 +1,28 @@
 const absoluto= 22;
-let pocoNada= 1.2;
-let ligero= 1.4;
-let moderado= 1.6;
-let fuerte= 1.8;
-let mFuerte= 2;
+let nombre;
+let edad;
+let peso;
+let carga;
 let meta;
 let velocidad;
 let salir= false;
 
-let bienvenida = alert ("Hola, bienvenido a DFit, tu contador de calorías")
+alert ("Hola, bienvenido a DFit, tu contador de calorías")
 
+nombre = prompt("Nos gustaría saber tu nombre.\nComo te llamas?");
 
-let edad = parseInt(prompt("Indicanos tu edad:"))
+edad = parseInt(prompt("Hola"+ " " + nombre + "!" + " Indicanos tu edad:"))
 while (edad < 18){
 	alert ("Debes que ser mayor de 18 años para tomar decisiones en cuanto a tu alimentación basados en éste tipo de analisis sencillo. Es por tu salud.")
-	bienvenida=alert ("Hola, bienvenido a DFit, tu contador de calorías")
 	edad = parseInt(prompt("Indicanos tu edad:"))
 }
 
-let peso= parseInt(prompt("Para empezar, indicanos cual es tu peso actual (No vale mentir)"));
+peso= parseInt(prompt("Para empezar, indicanos cual es tu peso actual (No vale mentir)"));
 while (peso < 30){
 	peso= parseInt(prompt("El peso que indicaste es demasiado bajo!! \nIndicanos cual es tu peso actual (No vale mentir)"));
 }
 
 
-let carga;
 
 function basales (peso,absoluto,carga){
 	while (salir != true){
@@ -79,25 +77,26 @@ while (salir != true){
 	}
 }
 
-if (meta == 1){
-	let final = parseInt(prompt("Indicanos que tan rápido deseas conseguir tu objetivo de bajar de peso:\n1- Lento\n2- Moderado\n3- Rápido\n\n(Ten en cuenta que la opción 3 es recomendable solo en personas que gocen de una buena salud y se encuentren en un estado fisico optimo con un periodo de entrenamiento avanzado y quieran lograr un objetivo estético extremo. Si no es tu caso, te recomendamos la opción 1 o 2. (Lo hacemos por tu salud)"))
-	switch (final){
-		case 1:
-		velocidad = calsBase*0.10;
-		alert(calsBase-velocidad + " " + "calorías diarias es lo que debes consumir para lograr tu objetivo")
-		break;
-		case 2:
-		velocidad = calsBase*0.20;
-		alert (calsBase-velocidad + " " + "calorías diarias es lo que debes consumir para lograr tu objetivo")
-		break;
-		case 3:
-		velocidad = calsBase*0.30;
-		alert (calsBase-velocidad + " " + "calorías diarias es lo que debes consumir para lograr tu objetivo")
-		break;
-		default:
-		alert ("Opción no válida")
-		break;
-	}
+function calsObjetivo(calsBase, velocidad){
+	if (meta == 1){
+		let final = parseInt(prompt("Indicanos que tan rápido deseas conseguir tu objetivo de bajar de peso:\n1- Lento\n2- Moderado\n3- Rápido\n\n(Ten en cuenta que la opción 3 es recomendable solo en personas que gocen de una buena salud y se encuentren en un estado fisico optimo con un periodo de entrenamiento avanzado y quieran lograr un objetivo estético extremo. Si no es tu caso, te recomendamos la opción 1 o 2. (Lo hacemos por tu salud)"))
+		switch (final){
+			case 1:
+			velocidad = calsBase*0.10;
+			alert(calsBase-velocidad + " " + "calorías diarias es lo que debes consumir para lograr tu objetivo")
+			break;
+			case 2:
+			velocidad = calsBase*0.20;
+			alert (calsBase-velocidad + " " + "calorías diarias es lo que debes consumir para lograr tu objetivo")
+			break;
+			case 3:
+			velocidad = calsBase*0.30;
+			alert (calsBase-velocidad + " " + "calorías diarias es lo que debes consumir para lograr tu objetivo")
+			break;
+			default:
+			alert ("Opción no válida")
+			break;
+		}
 	}else if (meta == 2){
 		final = parseInt(prompt("Indicanos que tan rápido deseas conseguir tu objetivo de ganar músculo:\n1- Lento\n2- Moderado\n3- Rápido\n\n(Ten en cuenta que la opción 3 rápido es recomendable para personas que tengan dificultad para ganar peso, ya sea tanto en músculo como en grasa. Si éste no es tu caso, te recomendamos las opciones 1 o 2, ésto con el fin de evitar que tengas un aumento de grasa significativo en tu proceso de aumento de masa muscular y debas pasar por un proceso de definicion extenso para lograr que tus ganancias se luzcan como todos queremos. Elije inteligentemente"))
 		switch (final){
@@ -118,9 +117,42 @@ if (meta == 1){
 			break;
 		}
 	}
+		if (meta == 1){
+			return calsBase - velocidad
+		}else if (meta == 2){
+			return calsBase + velocidad
+		}	
+}
+
+let calsFinales = calsObjetivo(calsBase, velocidad)
+
+const listaUsuarios = [];
+
+class usuario {
+	constructor(nombre, edad, peso, calsBase, meta, calsFinales){
+		this.nombre = nombre;
+		this.edad = edad;
+		this.peso = peso;
+		this.calsBase = calsBase;
+		this.meta = meta;
+		this.calsFinales = calsFinales;
+	}
+	datosUsuario(){
+		console.log("Datos del usuario" + " " + this.nombre + " " + this.edad + " años" + " " + this.peso + "kg")
+	}
+}
+
+listaUsuarios.push(nuevoUsuario = new usuario (nombre, edad, peso, calsBase, meta, calsFinales));
+listaUsuarios.push(nuevoUsuario = new usuario ("Pedro", 28, 98, 2500, 1, 2000))
+listaUsuarios.push(nuevoUsuario = new usuario ("Manuel", 50, 73, 2241, 2, 2741))
+listaUsuarios.push(nuevoUsuario = new usuario ("Manuel", 37, 81, 2635, 2, 3120))
+
+nuevoUsuario.datosUsuario();
+
+console.log(listaUsuarios);
 
 
-let despedida = alert ("Gracias por usar DFit!")
+alert ("Gracias por usar DFit!")
 
 
 
