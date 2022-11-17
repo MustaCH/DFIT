@@ -7,40 +7,55 @@ let meta;
 let velocidad;
 let salir= false;
 
-alert ("Hola, bienvenido a DFit, tu contador de calorías")
+let start = document.getElementById("b-start");
+const app = document.getElementById("app-sp");
 
-while (salir != true){
-	nombre = prompt("Nos gustaría saber tu nombre.\nComo te llamas?");
+start.addEventListener("click", comenzar)
+
+function comenzar (){
+	let guide = document.getElementById("guide");
+	guide.innerText= "Nos gustaría saber tu nombre.\nComo te llamas?";
+	start.remove();	
+	let input = document.createElement(`input`);
+	app.appendChild(input);
+	let button = document.createElement(`button`);
+	button.innerText="CONTINUAR";
+	button.className= "continuar"
+	app.appendChild(button);	
+}
+
+/*while (salir != true){
+	//nombre = prompt("Nos gustaría saber tu nombre.\nComo te llamas?");
 	if (nombre != ""){
 		salir=true
 	}
 }
 
-edad = parseInt(prompt("Hola"+ " " + nombre + "!" + " Indicanos tu edad:"))
+//edad = parseInt(prompt("Hola"+ " " + nombre + "!" + " Indicanos tu edad:"))
 for (salir = false; salir = true;){
 	if (edad >= 18){
 		salir = true
 		break;	
 	}else if (edad < 18){
-		alert ("Debes que ser mayor de 18 años para tomar decisiones en cuanto a tu alimentación basados en éste tipo de analisis sencillo. Es por tu salud.")
+		//alert ("Debes que ser mayor de 18 años para tomar decisiones en cuanto a tu alimentación basados en éste tipo de analisis sencillo. Es por tu salud.")
 		edad = parseInt(prompt("Indicanos tu edad:"))
 	}else{
-		alert("Opción no válida.")
+		//alert("Opción no válida.")
 		edad = parseInt(prompt("Indicanos tu edad:"))
 	}
 }
 
 salir=false
-peso= parseInt(prompt("Para empezar, indicanos cual es tu peso actual (No vale mentir)"));
+//peso= parseInt(prompt("Para empezar, indicanos cual es tu peso actual (No vale mentir)"));
 for (salir = false; salir = true;){
 	if (peso > 30){
 		salir = true
 		break;	
 	}else if (peso < 30){
-		alert ("El peso que indicaste es demasiado bajo!! \nIndicanos cual es tu peso actual (No vale mentir)")
+		//alert ("El peso que indicaste es demasiado bajo!! \nIndicanos cual es tu peso actual (No vale mentir)")
 		peso = parseInt(prompt("Indicanos tu peso actual:"))
 	}else{
-		alert("Opción no válida.")
+		//alert("Opción no válida.")
 		peso = parseInt(prompt("Indicanos tu peso actual:"))
 	}
 }
@@ -72,14 +87,14 @@ function basales (peso,absoluto,carga){
 				salir=true;
 				break;
 			default:
-				alert ("Opción no válida")	
+				//alert ("Opción no válida")	
 				break;
 		}
 	}
 	return peso * absoluto * carga
 }
 let calsBase = basales (peso, absoluto, carga);
-alert ("Muy bien! Ya sabemos tus calorías basales:\n" + " " + calsBase + " calorías al día es lo que consumes con tu actividad actual")
+//alert ("Muy bien! Ya sabemos tus calorías basales:\n" + " " + calsBase + " calorías al día es lo que consumes con tu actividad actual")
 
 
 salir= false;
@@ -95,7 +110,7 @@ while (salir != true){
 			salir=true;
 			break;
 		default:
-			alert ("Opción no válida")
+			//alert ("Opción no válida")
 			break;			
 	}
 }
@@ -106,18 +121,18 @@ function calsObjetivo(calsBase, velocidad){
 		switch (final){
 			case 1:
 			velocidad = calsBase*0.10;
-			alert(calsBase-velocidad + " " + "calorías diarias es lo que debes consumir para lograr tu objetivo")
+			//alert(calsBase-velocidad + " " + "calorías diarias es lo que debes consumir para lograr tu objetivo")
 			break;
 			case 2:
 			velocidad = calsBase*0.20;
-			alert (calsBase-velocidad + " " + "calorías diarias es lo que debes consumir para lograr tu objetivo")
+			//alert (calsBase-velocidad + " " + "calorías diarias es lo que debes consumir para lograr tu objetivo")
 			break;
 			case 3:
 			velocidad = calsBase*0.30;
-			alert (calsBase-velocidad + " " + "calorías diarias es lo que debes consumir para lograr tu objetivo")
+			//alert (calsBase-velocidad + " " + "calorías diarias es lo que debes consumir para lograr tu objetivo")
 			break;
 			default:
-			alert ("Opción no válida")
+			//alert ("Opción no válida")
 			break;
 		}
 	}else if (meta == 2){
@@ -125,18 +140,18 @@ function calsObjetivo(calsBase, velocidad){
 		switch (final){
 			case 1:
 			velocidad = calsBase*1.10;
-			alert (calsBase+velocidad + " " + "calorías diarias es lo que debes consumir para lograr tu objetivo")
+			//alert (calsBase+velocidad + " " + "calorías diarias es lo que debes consumir para lograr tu objetivo")
 			break;
 			case 2:
 			velocidad = calsBase*1.15;
-			alert (calsBase+velocidad + " " + "calorías diarias es lo que debes consumir para lograr tu objetivo")
+			//alert (calsBase+velocidad + " " + "calorías diarias es lo que debes consumir para lograr tu objetivo")
 			break;
 			case 3:
 			velocidad = calsBase*1.20;
-			alert (calsBase+velocidad + " " + "calorías diarias es lo que debes consumir para lograr tu objetivo")
+			//alert (calsBase+velocidad + " " + "calorías diarias es lo que debes consumir para lograr tu objetivo")
 			break;
 			default:
-			alert ("Opción no válida")
+			//alert ("Opción no válida")
 			break;
 		}
 	}
@@ -182,4 +197,4 @@ console.log(findUsuario);
 console.log(userMeta);
 console.log(listaCals);
 
-alert ("Gracias por usar DFit!");
+//alert ("Gracias por usar DFit!");*/
