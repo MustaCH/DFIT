@@ -7,194 +7,401 @@ let meta;
 let velocidad;
 let salir= false;
 
-let start = document.getElementById("b-start");
-const app = document.getElementById("app-sp");
+let usuarios;
+let newUsuario;
 
-start.addEventListener("click", comenzar)
+let app = document.getElementById("app-sp");
+let guide_1 = document.getElementById("guide");
+let btn_start = document.getElementById("b-start");
 
-function comenzar (){
-	let guide = document.getElementById("guide");
-	guide.innerText= "Nos gustaría saber tu nombre.\nComo te llamas?";
-	start.remove();	
-	let input = document.createElement(`input`);
-	app.appendChild(input);
-	let button = document.createElement(`button`);
-	button.innerText="CONTINUAR";
-	button.className= "continuar"
-	app.appendChild(button);	
+let input_nombre = document.createElement("input");
+let guide_2 = document.createElement("h2");
+let input_edad= document.createElement("input");
+let guide_3 = document.createElement("h2");
+let input_peso= document.createElement("input");
+let btn_continuar=document.createElement("button");
+
+btn_start.addEventListener("click",comenzar);
+
+function comenzar(){
+	guide_1.innerText="PRIMERO QUE NADA NECESITAMOS UNOS DATOS\n\nIndicanos tu nombre";
+	btn_start.remove();
+	input_nombre.name="name_input_nombre";
+	input_nombre.id="id_input_nombre";
+	input_nombre.type="text";
+	input_nombre.className="input-style";
+	app.appendChild(input_nombre);
+	guide_2.innerText="Indicanos tu edad.";
+	guide_2.id="guide_2"
+	app.appendChild(guide_2);
+	input_edad.name="name_input_edad";
+	input_edad.id="id_input_edad";
+	input_edad.type="number";
+	input_edad.className="input-style";
+	app.appendChild(input_edad);
+	guide_3.innerText="Indicanos tu peso actual.";
+	guide_3.id="guide_3"
+	app.appendChild(guide_3);
+	input_peso.name="name_input_peso";
+	input_peso.id="id_input_peso";
+	input_peso.type="number";
+	input_peso.className="input-style";
+	app.appendChild(input_peso);
+	btn_continuar.name="name_btn_continuar";
+	btn_continuar.id="id_btn_continuar";
+	btn_continuar.className="btn-style";
+	btn_continuar.innerText="CONTINUAR";
+	app.appendChild(btn_continuar);
 }
 
-/*while (salir != true){
-	//nombre = prompt("Nos gustaría saber tu nombre.\nComo te llamas?");
-	if (nombre != ""){
-		salir=true
-	}
+if (localStorage.getItem("usuarios")){
+	usuarios=JSON.parse(localStorage.getItem("usuarios"));
+}else {
+	usuarios = [];
 }
 
-//edad = parseInt(prompt("Hola"+ " " + nombre + "!" + " Indicanos tu edad:"))
-for (salir = false; salir = true;){
-	if (edad >= 18){
-		salir = true
-		break;	
-	}else if (edad < 18){
-		//alert ("Debes que ser mayor de 18 años para tomar decisiones en cuanto a tu alimentación basados en éste tipo de analisis sencillo. Es por tu salud.")
-		edad = parseInt(prompt("Indicanos tu edad:"))
-	}else{
-		//alert("Opción no válida.")
-		edad = parseInt(prompt("Indicanos tu edad:"))
-	}
-}
-
-salir=false
-//peso= parseInt(prompt("Para empezar, indicanos cual es tu peso actual (No vale mentir)"));
-for (salir = false; salir = true;){
-	if (peso > 30){
-		salir = true
-		break;	
-	}else if (peso < 30){
-		//alert ("El peso que indicaste es demasiado bajo!! \nIndicanos cual es tu peso actual (No vale mentir)")
-		peso = parseInt(prompt("Indicanos tu peso actual:"))
-	}else{
-		//alert("Opción no válida.")
-		peso = parseInt(prompt("Indicanos tu peso actual:"))
-	}
-}
-
-
-salir=false
-function basales (peso,absoluto,carga){
-	while (salir != true){
-		let actividad= parseInt(prompt("Ahora indicanos cual es tu nivel de actividad \n1- Poco o nada de ejercicio \n2- Entrenamiento ligero (1-3 veces por semana) \n3- Entrenamiento moderado (3-4 veces por semana) \n4- Entrenamiento fuerte (5-7 veces por semana) \n5- Entrenamiento muy fuerte (6 o más y dobles sesiones diarias por semana"))
-		switch (actividad){
-			case 1:
-				carga=1.2;
-				salir=true;
-				break;
-			case 2:
-				carga=1.4;
-				salir=true;
-				break;
-			case 3:
-				carga=1.6;
-				salir=true;
-				break;
-			case 4: 
-				carga=1.8;
-				salir=true;
-				break;
-			case 5:
-				carga=2;
-				salir=true;
-				break;
-			default:
-				//alert ("Opción no válida")	
-				break;
-		}
-	}
-	return peso * absoluto * carga
-}
-let calsBase = basales (peso, absoluto, carga);
-//alert ("Muy bien! Ya sabemos tus calorías basales:\n" + " " + calsBase + " calorías al día es lo que consumes con tu actividad actual")
-
-
-salir= false;
-while (salir != true){
-	let objetivo=  parseInt(prompt("Bien! Contanos cual es tu objetivo:\n1- Bajar de peso \n2 - Ganar músculo"))
-	switch (objetivo) {
-		case 1:
-			meta=1;
-			salir=true;
-			break;
-		case 2:
-			meta=2;
-			salir=true;
-			break;
-		default:
-			//alert ("Opción no válida")
-			break;			
-	}
-}
-
-function calsObjetivo(calsBase, velocidad){
-	if (meta == 1){
-		let final = parseInt(prompt("Indicanos que tan rápido deseas conseguir tu objetivo de bajar de peso:\n1- Lento\n2- Moderado\n3- Rápido\n\n(Ten en cuenta que la opción 3 es recomendable solo en personas que gocen de una buena salud y se encuentren en un estado fisico optimo con un periodo de entrenamiento avanzado y quieran lograr un objetivo estético extremo. Si no es tu caso, te recomendamos la opción 1 o 2. (Lo hacemos por tu salud)"))
-		switch (final){
-			case 1:
-			velocidad = calsBase*0.10;
-			//alert(calsBase-velocidad + " " + "calorías diarias es lo que debes consumir para lograr tu objetivo")
-			break;
-			case 2:
-			velocidad = calsBase*0.20;
-			//alert (calsBase-velocidad + " " + "calorías diarias es lo que debes consumir para lograr tu objetivo")
-			break;
-			case 3:
-			velocidad = calsBase*0.30;
-			//alert (calsBase-velocidad + " " + "calorías diarias es lo que debes consumir para lograr tu objetivo")
-			break;
-			default:
-			//alert ("Opción no válida")
-			break;
-		}
-	}else if (meta == 2){
-		final = parseInt(prompt("Indicanos que tan rápido deseas conseguir tu objetivo de ganar músculo:\n1- Lento\n2- Moderado\n3- Rápido\n\n(Ten en cuenta que la opción 3 rápido es recomendable para personas que tengan dificultad para ganar peso, ya sea tanto en músculo como en grasa. Si éste no es tu caso, te recomendamos las opciones 1 o 2, ésto con el fin de evitar que tengas un aumento de grasa significativo en tu proceso de aumento de masa muscular y debas pasar por un proceso de definicion extenso para lograr que tus ganancias se luzcan como todos queremos. Elije inteligentemente"))
-		switch (final){
-			case 1:
-			velocidad = calsBase*1.10;
-			//alert (calsBase+velocidad + " " + "calorías diarias es lo que debes consumir para lograr tu objetivo")
-			break;
-			case 2:
-			velocidad = calsBase*1.15;
-			//alert (calsBase+velocidad + " " + "calorías diarias es lo que debes consumir para lograr tu objetivo")
-			break;
-			case 3:
-			velocidad = calsBase*1.20;
-			//alert (calsBase+velocidad + " " + "calorías diarias es lo que debes consumir para lograr tu objetivo")
-			break;
-			default:
-			//alert ("Opción no válida")
-			break;
-		}
-	}
-		if (meta == 1){
-			return calsBase - velocidad
-		}else if (meta == 2){
-			return calsBase + velocidad
-		}	
-}
-
-let calsFinales = calsObjetivo(calsBase, velocidad)
-
-const listaUsuarios = [];
-
-class usuario {
-	constructor(nombre, edad, peso, calsBase, meta, calsFinales){
+class Usuario {
+	constructor(nombre,edad,peso,carga,meta){
 		this.nombre = nombre;
 		this.edad = edad;
-		this.peso = peso;
-		this.calsBase = calsBase;
-		this.meta = meta;
-		this.calsFinales = calsFinales;
-	}
-	datosUsuario(){
-		console.log("Datos del usuario:" + " " + this.nombre + " " + this.edad + " años" + " " + this.peso + "kg")
+		this.peso= peso;
+		this.carga= carga;
+		this.meta= meta;
 	}
 }
 
-listaUsuarios.push(nuevoUsuario = new usuario (nombre, edad, peso, calsBase, meta, calsFinales));
-listaUsuarios.push(usuario1 = new usuario ("Pedro", 28, 98, 2500, 1, 2000));
-listaUsuarios.push(usuario2 = new usuario ("Manuel", 50, 73, 2241, 2, 2741));
-listaUsuarios.push(usuario3 = new usuario ("Ricardo", 37, 81, 2635, 2, 3120));
+function almacUsuario (usuario){
+	return usuarios.unshift(usuario);
+}
 
-nuevoUsuario.datosUsuario([0]);
+function almacStorage (user){
+	let storage = localStorage.setItem('usuarios',JSON.stringify(user))
+	return storage; 
+}
 
-console.log(listaUsuarios);
+btn_continuar.addEventListener("click", selectActiv);
 
-const findUsuario = listaUsuarios.find((usuario)=>usuario.nombre==="Pedro");
-const userMeta = listaUsuarios.filter((usuario)=>usuario.meta===1);
-const listaCals = listaUsuarios.map(usuario => usuario.peso);
+let guide_4= document.createElement("h2");
+let option1 = document.createElement("input");    
+let option1Label = document.createElement("label");
+let option1Texto = document.createTextNode("Poco o nada")
+let option2 = document.createElement("input");    
+let option2Label = document.createElement("label");
+let option2Texto = document.createTextNode("Entrenamiento ligero")
+let option3 = document.createElement("input");    
+let option3Label = document.createElement("label");
+let option3Texto = document.createTextNode("Entrenamiento moderado")
+let option4 = document.createElement("input");    
+let option4Label = document.createElement("label");
+let option4Texto = document.createTextNode("Entrenamiento fuerte")
+let option5 = document.createElement("input");    
+let option5Label = document.createElement("label");
+let option5Texto = document.createTextNode("Entrenamiento muy fuerte")
+let btn_continuar_2 = document.createElement("button");
+    
 
-console.log(findUsuario);
-console.log(userMeta);
-console.log(listaCals);
+function selectActiv(){
+	guide_1.innerText="BIEVENIDO/A!"
+	input_nombre.remove();
+	guide_2.remove();
+	input_edad.remove();
+	guide_3.remove();
+	input_peso.remove();
+	btn_continuar.remove();
+	guide_4.innerText="Indicanos cual es tu nivel de actividad:"
+	guide_4.id="guide_4";
+	app.appendChild(guide_4);
+	option1.type="radio";
+	option1.id="option1"
+	option1.className="radio-btn"
+	option1.value=1.2;
+	option1.name="carga";
+	option1Label.htmlFor = "option1";
+	option1Label.appendChild(option1Texto);
+	app.appendChild(option1);
+	app.appendChild(option1Label); 
+	option2.type="radio";
+	option2.id="option2"
+	option2.className="radio-btn"
+	option2.value=1.4;
+	option2.name="carga";
+	option2Label.htmlFor = "option2";
+	option2Label.appendChild(option2Texto);
+	app.appendChild(option2);
+	app.appendChild(option2Label);
+	option3.type="radio";
+	option3.id="option3"
+	option3.className="radio-btn"
+	option3.value=1.6;
+	option3.name="carga";
+	option3Label.htmlFor = "option3";
+	option3Label.appendChild(option3Texto);
+	app.appendChild(option3);
+	app.appendChild(option3Label);
+	option4.type="radio";
+	option4.id="option4"
+	option4.className="radio-btn"
+	option4.value=1.8;
+	option4.name="carga";
+	option4Label.htmlFor = "option4";
+	option4Label.appendChild(option4Texto);
+	app.appendChild(option4);
+	app.appendChild(option4Label);
+	option5.type="radio";
+	option5.id="option5"
+	option5.className="radio-btn"
+	option5.value=2.0;
+	option5.name="carga";
+	option5Label.htmlFor = "option5";
+	option5Label.appendChild(option5Texto);
+	app.appendChild(option5);
+	app.appendChild(option5Label);    
+	btn_continuar_2.name="name_btn_continuar_2";
+	btn_continuar_2.id="id_btn_continuar_2";
+	btn_continuar_2.className="btn-style";
+	btn_continuar_2.innerText="CONTINUAR";
+	app.appendChild(btn_continuar_2);
+}
 
-//alert ("Gracias por usar DFit!");*/
+btn_continuar_2.addEventListener('click',selectObjetivo)
+
+let guide_5=document.createElement("h2");
+let objetivo1 = document.createElement("input");    
+let objetivo1Label = document.createElement("label");
+let objetivo1Texto = document.createTextNode("Bajar de peso");
+let objetivo2 = document.createElement("input");    
+let objetivo2Label = document.createElement("label");
+let objetivo2Texto = document.createTextNode("Aumentar músculo");
+let btn_continuar_3 = document.createElement("button");
+
+function selectObjetivo(){
+	guide_1.innerText="MUY BIEN!";
+	guide_4.remove();
+	option1.remove();
+	option2.remove();
+	option3.remove();
+	option4.remove();
+	option5.remove();
+	option1Label.remove();
+	option2Label.remove();
+	option3Label.remove();
+	option4Label.remove();
+	option5Label.remove();
+	option1Texto.remove();
+	option2Texto.remove();
+	option3Texto.remove();
+	option4Texto.remove();
+	option5Texto.remove();
+	btn_continuar_2.remove();
+	guide_5.innerText="Ahora que ya sabemos tu actividad\n¿Cual es tu objetivo?";
+	app.appendChild(guide_5);
+	objetivo1.type="radio";
+	objetivo1.id="objetivo1"
+	objetivo1.className="radio-btn"
+	objetivo1.value="Bajar de peso";
+	objetivo1.name="meta";
+	objetivo1Label.htmlFor = "objetivo1";
+	objetivo1Label.appendChild(objetivo1Texto);
+	app.appendChild(objetivo1);
+	app.appendChild(objetivo1Label); 
+	objetivo2.type="radio";
+	objetivo2.id="objetivo2"
+	objetivo2.className="radio-btn"
+	objetivo2.value="Aumentar músculo";
+	objetivo2.name="meta";
+	objetivo2Label.htmlFor = "objetivo2";
+	objetivo2Label.appendChild(objetivo2Texto);
+	app.appendChild(objetivo2);
+	app.appendChild(objetivo2Label);
+	btn_continuar_3.name="name_btn_continuar_3";
+	btn_continuar_3.id="id_btn_continuar_3";
+	btn_continuar_3.className="btn-style";
+	btn_continuar_3.innerText="CONTINUAR";
+	app.appendChild(btn_continuar_3);
+}
+
+
+btn_continuar_3.addEventListener('click',()=>{
+	if(document.getElementById("objetivo1").checked){
+	 	newUsuario = new Usuario(
+		input_nombre.value,
+		input_edad.value,
+		input_peso.value,
+		option1.value,
+		objetivo1.value
+		);
+		almacUsuario(newUsuario);
+		almacStorage(usuarios);
+	}if(document.getElementById("objetivo2").checked){
+	 	newUsuario = new Usuario(
+		input_nombre.value,
+		input_edad.value,
+		input_peso.value,
+		option2.value,
+		objetivo2.value
+		);
+		almacUsuario(newUsuario);
+		almacStorage(usuarios);
+	}
+	selectVeloc();	
+})
+
+let calsBase = usuarios[0].peso*absoluto*usuarios[0].carga
+console.log(calsBase)
+
+let guide_6=document.createElement("h2");
+let veloc1 = document.createElement("input");    
+let veloc1Label = document.createElement("label");
+let veloc1Texto = document.createTextNode("Lento");
+let veloc2 = document.createElement("input");    
+let veloc2Label = document.createElement("label");
+let veloc2Texto = document.createTextNode("Moderado");
+let veloc3 = document.createElement("input");    
+let veloc3Label = document.createElement("label");
+let veloc3Texto = document.createTextNode("Rápido");
+let btn_continuar_4 = document.createElement("button");
+
+function selectVeloc(){
+	guide_1.innerText="EXCELENTE "+usuarios[0].nombre.toUpperCase()+"!";
+	guide_5.remove();
+	objetivo1.remove();
+	objetivo2.remove();
+	objetivo1Label.remove();
+	objetivo2Label.remove();
+	objetivo1Texto.remove();
+	objetivo2Texto.remove();
+	btn_continuar_3.remove();
+	guide_6.innerText="Te felicitamos por tu objetivo de "+usuarios[0].meta.toLowerCase()+"!"+"\nAhora indicanos que tan rápido deseas alcanzarlo.";
+	app.appendChild(guide_6);
+	if(usuarios[0].meta === "Bajar de peso"){
+		veloc1.type="radio";
+		veloc1.id="veloc1"
+		veloc1.className="radio-btn"
+		veloc1.value=calsBase*0.10;
+		veloc1.name="veloc";
+		veloc1Label.htmlFor = "veloc1";
+		veloc1Label.appendChild(veloc1Texto);
+		app.appendChild(veloc1);
+		app.appendChild(veloc1Label); 
+		veloc2.type="radio";
+		veloc2.id="veloc2"
+		veloc2.className="radio-btn"
+		veloc2.value=calsBase*0.20;
+		veloc2.name="veloc";
+		veloc2Label.htmlFor = "veloc2";
+		veloc2Label.appendChild(veloc2Texto);
+		app.appendChild(veloc2);
+		app.appendChild(veloc2Label);
+		veloc3.type="radio";
+		veloc3.id="veloc3"
+		veloc3.className="radio-btn"
+		veloc3.value=calsBase*0.30;
+		veloc3.name="veloc";
+		veloc3Label.htmlFor = "veloc3";
+		veloc3Label.appendChild(veloc3Texto);
+		app.appendChild(veloc3);
+		app.appendChild(veloc3Label);
+	}else if(usuarios[0].meta === "Aumentar músculo"){
+		veloc1.type="radio";
+		veloc1.id="veloc1"
+		veloc1.className="radio-btn"
+		veloc1.value=calsBase*1.10;
+		veloc1.name="veloc";
+		veloc1Label.htmlFor = "veloc1";
+		veloc1Label.appendChild(veloc1Texto);
+		app.appendChild(veloc1);
+		app.appendChild(veloc1Label); 
+		veloc2.type="radio";
+		veloc2.id="veloc2"
+		veloc2.className="radio-btn"
+		veloc2.value=calsBase*1.15;
+		veloc2.name="veloc";
+		veloc2Label.htmlFor = "veloc2";
+		veloc2Label.appendChild(veloc2Texto);
+		app.appendChild(veloc2);
+		app.appendChild(veloc2Label);
+		veloc3.type="radio";
+		veloc3.id="veloc3"
+		veloc3.className="radio-btn"
+		veloc3.value=calsBase*1.20;
+		veloc3.name="veloc";
+		veloc3Label.htmlFor = "veloc3";
+		veloc3Label.appendChild(veloc3Texto);
+		app.appendChild(veloc3);
+		app.appendChild(veloc3Label);
+	}
+	btn_continuar_4.name="name_btn_continuar_4";
+	btn_continuar_4.id="id_btn_continuar_4";
+	btn_continuar_4.className="btn-style";
+	btn_continuar_4.innerText="CONTINUAR";
+	app.appendChild(btn_continuar_4);
+}
+
+let calsFinales;
+
+btn_continuar_4.addEventListener('click',()=>{
+	if(usuarios[0].meta === "Bajar de peso"){
+		if(document.getElementById("veloc1").checked){
+			calsFinales = veloc1.value;
+			console.log(calsFinales);
+		}if(document.getElementById("veloc2").checked){
+			calsFinales = veloc2.value;
+			console.log(calsFinales);
+		}if(document.getElementById("veloc3").checked){
+			calsFinales = veloc3.value;
+			console.log(calsFinales);
+		}
+	}else if(usuarios[0].meta === "Aumentar músculo"){
+		if(document.getElementById("veloc1").checked){
+			calsFinales = veloc1.value;
+			console.log(calsFinales);
+		}if(document.getElementById("veloc2").checked){
+			calsFinales = veloc2.value;
+			console.log(calsFinales);
+		}if(document.getElementById("veloc3").checked){
+			calsFinales = veloc3.value;
+			console.log(calsFinales);
+		}
+	}
+	mensajeFinal();
+})
+
+let guide_7=document.createElement("h2")
+let resultado=document.createElement("h3")
+let btn_finalizar=document.createElement("button")
+
+function mensajeFinal(){
+	guide_1.innerText="FELICITACIONES "+usuarios[0].nombre.toUpperCase()+"!";
+	guide_6.remove();
+	veloc1.remove();
+	veloc2.remove();
+	veloc3.remove();
+	veloc1Label.remove();
+	veloc2Label.remove();
+	veloc3Label.remove();
+	veloc1Texto.remove();
+	veloc2Texto.remove();
+	veloc2Texto.remove();
+	btn_continuar_4.remove();
+	guide_7.innerText="Ya tenemos tus resultados.\nLas calorías que debes consumir diariamente para alcanzar tu objetivo de "+usuarios[0].meta.toLowerCase()+" son:"
+	app.appendChild(guide_7);
+	resultado.innerText= calsFinales + " kcal";
+	resultado.id="id-resultado";
+	app.appendChild(resultado);
+	btn_finalizar.name="name_btn_finalizar";
+	btn_finalizar.id="id_btn_finalizar";
+	btn_finalizar.className="btn-style";
+	btn_finalizar.innerText="FINALIZAR";
+	app.appendChild(btn_finalizar);
+}
+
+btn_finalizar.addEventListener('click',()=>{
+	guide_1.remove();
+	guide_7.remove();
+	resultado.remove();
+	btn_finalizar.remove();
+	let greetings = document.createElement("h2");
+	greetings.innerText="GRACIAS POR USAR DFIT!"
+	app.appendChild(greetings)
+})
+
