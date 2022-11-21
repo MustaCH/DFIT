@@ -1,10 +1,4 @@
 const absoluto= 22;
-let nombre;
-let edad;
-let peso;
-let carga;
-let meta;
-let velocidad;
 let salir= false;
 
 let usuarios;
@@ -79,7 +73,17 @@ function almacStorage (user){
 	return storage; 
 }
 
-btn_continuar.addEventListener("click", selectActiv);
+btn_continuar.addEventListener("click", ()=>{
+	if (input_nombre.value==""){
+		alert("Los campos son obligatorios");
+	}else if (input_edad.value==""){
+		alert("Los campos son obligatorios");
+	}else if (input_peso.value==""){
+		alert("Los campos son obligatorios");
+	}else{
+		selectActiv();
+	}
+});
 
 let guide_4= document.createElement("h2");
 let option1 = document.createElement("input");    
@@ -163,7 +167,22 @@ function selectActiv(){
 	app.appendChild(btn_continuar_2);
 }
 
-btn_continuar_2.addEventListener('click',selectObjetivo)
+btn_continuar_2.addEventListener('click',()=>{
+	if (document.getElementById("option1").checked){
+		selectObjetivo();
+	}if (document.getElementById("option2").checked){
+		selectObjetivo();
+	}if (document.getElementById("option3").checked){
+		selectObjetivo();
+	}if (document.getElementById("option4").checked){
+		selectObjetivo();
+	}if (document.getElementById("option5").checked){
+		selectObjetivo();
+	}else{
+		alert("Debe seleccionar al menos una opción!");
+	}
+})
+
 
 let guide_5=document.createElement("h2");
 let objetivo1 = document.createElement("input");    
@@ -232,7 +251,8 @@ btn_continuar_3.addEventListener('click',()=>{
 		);
 		almacUsuario(newUsuario);
 		almacStorage(usuarios);
-	}if(document.getElementById("objetivo2").checked){
+		selectVeloc();
+	}else if(document.getElementById("objetivo2").checked){
 	 	newUsuario = new Usuario(
 		input_nombre.value,
 		input_edad.value,
@@ -242,8 +262,10 @@ btn_continuar_3.addEventListener('click',()=>{
 		);
 		almacUsuario(newUsuario);
 		almacStorage(usuarios);
-	}
-	selectVeloc();	
+		selectVeloc();
+	}else{
+		alert("Debe seleccionar al menos una opción!")
+	};	
 })
 
 let calsBase = usuarios[0].peso*absoluto*usuarios[0].carga
@@ -343,28 +365,35 @@ btn_continuar_4.addEventListener('click',()=>{
 	if(usuarios[0].meta === "Bajar de peso"){
 		if(document.getElementById("veloc1").checked){
 			calsFinales = veloc1.value;
+			mensajeFinal();
 			console.log(calsFinales);
-		}if(document.getElementById("veloc2").checked){
+		}else if(document.getElementById("veloc2").checked){
 			calsFinales = veloc2.value;
+			mensajeFinal();
 			console.log(calsFinales);
-		}if(document.getElementById("veloc3").checked){
+		}else if(document.getElementById("veloc3").checked){
 			calsFinales = veloc3.value;
+			mensajeFinal();
 			console.log(calsFinales);
 		}
 	}else if(usuarios[0].meta === "Aumentar músculo"){
 		if(document.getElementById("veloc1").checked){
 			calsFinales = veloc1.value;
+			mensajeFinal();
 			console.log(calsFinales);
-		}if(document.getElementById("veloc2").checked){
+		}else if(document.getElementById("veloc2").checked){
 			calsFinales = veloc2.value;
+			mensajeFinal();
 			console.log(calsFinales);
-		}if(document.getElementById("veloc3").checked){
+		}else if(document.getElementById("veloc3").checked){
 			calsFinales = veloc3.value;
+			mensajeFinal();
 			console.log(calsFinales);
 		}
-	}
-	mensajeFinal();
-})
+	}else{
+		alert("Debe seleccionar al menos una opción!")
+	};
+});
 
 let guide_7=document.createElement("h2")
 let resultado=document.createElement("h3")
