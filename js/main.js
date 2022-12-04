@@ -76,11 +76,23 @@ function almacStorage(user) {
 
 btn_continuar.addEventListener("click", () => {
   if (input_nombre.value == "") {
-    alert("Los campos son obligatorios");
+    swal(
+      "LOS CAMPOS SON OBLIGATORIOS",
+      "Completa todos los campos para continuar.",
+      "error"
+    );
   } else if (input_edad.value == "") {
-    alert("Los campos son obligatorios");
+    swal(
+      "LOS CAMPOS SON OBLIGATORIOS",
+      "Completa todos los campos para continuar.",
+      "error"
+    );
   } else if (input_peso.value == "") {
-    alert("Los campos son obligatorios");
+    swal(
+      "LOS CAMPOS SON OBLIGATORIOS",
+      "Completa todos los campos para continuar.",
+      "error"
+    );
   } else {
     selectActiv();
   }
@@ -90,18 +102,23 @@ let guide_4 = document.createElement("h2");
 let option1 = document.createElement("input");
 let option1Label = document.createElement("label");
 let option1Texto = document.createTextNode("Poco o nada");
+let option1Texto2 = document.createElement("h4");
 let option2 = document.createElement("input");
 let option2Label = document.createElement("label");
 let option2Texto = document.createTextNode("Entrenamiento ligero");
+let option2Texto2 = document.createElement("h4");
 let option3 = document.createElement("input");
 let option3Label = document.createElement("label");
 let option3Texto = document.createTextNode("Entrenamiento moderado");
+let option3Texto2 = document.createElement("h4");
 let option4 = document.createElement("input");
 let option4Label = document.createElement("label");
 let option4Texto = document.createTextNode("Entrenamiento fuerte");
+let option4Texto2 = document.createElement("h4");
 let option5 = document.createElement("input");
 let option5Label = document.createElement("label");
 let option5Texto = document.createTextNode("Entrenamiento muy fuerte");
+let option5Texto2 = document.createElement("h4");
 let btn_continuar_2 = document.createElement("button");
 
 function selectActiv() {
@@ -124,6 +141,8 @@ function selectActiv() {
   option1Label.appendChild(option1Texto);
   app.appendChild(option1);
   app.appendChild(option1Label);
+  option1Texto2.innerText = "(0-2 entrenamientos por semana)";
+  app.appendChild(option1Texto2);
   option2.type = "radio";
   option2.id = "option2";
   option2.className = "radio-btn";
@@ -133,6 +152,8 @@ function selectActiv() {
   option2Label.appendChild(option2Texto);
   app.appendChild(option2);
   app.appendChild(option2Label);
+  option2Texto2.innerText = "(2-3 entrenamientos por semana)";
+  app.appendChild(option2Texto2);
   option3.type = "radio";
   option3.id = "option3";
   option3.className = "radio-btn";
@@ -142,6 +163,8 @@ function selectActiv() {
   option3Label.appendChild(option3Texto);
   app.appendChild(option3);
   app.appendChild(option3Label);
+  option3Texto2.innerText = "(3-4 entrenamientos por semana)";
+  app.appendChild(option3Texto2);
   option4.type = "radio";
   option4.id = "option4";
   option4.className = "radio-btn";
@@ -151,6 +174,8 @@ function selectActiv() {
   option4Label.appendChild(option4Texto);
   app.appendChild(option4);
   app.appendChild(option4Label);
+  option4Texto2.innerText = "(4-5 entrenamientos por semana)";
+  app.appendChild(option4Texto2);
   option5.type = "radio";
   option5.id = "option5";
   option5.className = "radio-btn";
@@ -160,6 +185,8 @@ function selectActiv() {
   option5Label.appendChild(option5Texto);
   app.appendChild(option5);
   app.appendChild(option5Label);
+  option5Texto2.innerText = "(6 o más entrenamientos por semana)";
+  app.appendChild(option5Texto2);
   btn_continuar_2.name = "name_btn_continuar_2";
   btn_continuar_2.id = "id_btn_continuar_2";
   btn_continuar_2.className = "btn-style";
@@ -179,7 +206,11 @@ btn_continuar_2.addEventListener("click", () => {
   } else if (document.getElementById("option5").checked) {
     selectObjetivo();
   } else {
-    alert("Debe seleccionar al menos una opción!");
+    swal(
+      "DEBE SELECCIONAR UNA OPCIÓN",
+      "Seleccione una opción para continuar.",
+      "error"
+    );
   }
 });
 
@@ -210,6 +241,11 @@ function selectObjetivo() {
   option3Texto.remove();
   option4Texto.remove();
   option5Texto.remove();
+  option1Texto2.remove();
+  option2Texto2.remove();
+  option3Texto2.remove();
+  option4Texto2.remove();
+  option5Texto2.remove();
   btn_continuar_2.remove();
   guide_5.innerText =
     "Ahora que ya sabemos tu actividad\n¿Cual es tu objetivo?";
@@ -263,12 +299,15 @@ btn_continuar_3.addEventListener("click", () => {
     almacStorage(usuarios);
     selectVeloc();
   } else {
-    alert("Debe seleccionar al menos una opción!");
+    swal(
+      "DEBE SELECCIONAR UNA OPCIÓN",
+      "Seleccione una opción para continuar.",
+      "error"
+    );
   }
 });
 
 let calsBase = usuarios[0].peso * absoluto * usuarios[0].carga;
-console.log(calsBase);
 
 let guide_6 = document.createElement("h2");
 let veloc1 = document.createElement("input");
@@ -369,32 +408,36 @@ btn_continuar_4.addEventListener("click", () => {
     if (document.getElementById("veloc1").checked) {
       calsFinales = veloc1.value;
       mensajeFinal();
-      console.log(calsFinales);
     } else if (document.getElementById("veloc2").checked) {
       calsFinales = veloc2.value;
       mensajeFinal();
-      console.log(calsFinales);
     } else if (document.getElementById("veloc3").checked) {
       calsFinales = veloc3.value;
       mensajeFinal();
-      console.log(calsFinales);
+    } else {
+      swal(
+        "DEBE SELECCIONAR UNA OPCIÓN",
+        "Seleccione una opción para continuar.",
+        "error"
+      );
     }
   } else if (usuarios[0].meta === "Aumentar músculo") {
     if (document.getElementById("veloc1").checked) {
       calsFinales = veloc1.value;
       mensajeFinal();
-      console.log(calsFinales);
     } else if (document.getElementById("veloc2").checked) {
       calsFinales = veloc2.value;
       mensajeFinal();
-      console.log(calsFinales);
     } else if (document.getElementById("veloc3").checked) {
       calsFinales = veloc3.value;
       mensajeFinal();
-      console.log(calsFinales);
+    } else {
+      swal(
+        "DEBE SELECCIONAR UNA OPCIÓN",
+        "Seleccione una opción para continuar.",
+        "error"
+      );
     }
-  } else {
-    alert("Debe seleccionar al menos una opción!");
   }
 });
 
@@ -417,7 +460,7 @@ function mensajeFinal() {
   veloc2Texto.remove();
   btn_continuar_4.remove();
   guide_7.innerText =
-    "Ya tenemos tus resultados.\nLas calorías que debes consumir diariamente para alcanzar tu objetivo de " +
+    "Ya tenemos tus resultados.\nLas calorías que debes consumir diariamente\npara alcanzar tu objetivo de " +
     usuarios[0].meta.toLowerCase() +
     " son:";
   app.appendChild(guide_7);

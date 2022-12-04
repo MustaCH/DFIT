@@ -1,92 +1,124 @@
-body{
-	background-color: black;
+body {
+  background-color: black;
 }
 
-#m-main{
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
+h4 {
+  font-family: Questrial;
+  color: whitesmoke;
+  font-weight: lighter;
+  margin-top: 0.2%;
+  margin-bottom: 0%;
 }
 
-#m-main h1{
-	font-weight: bolder;
-	margin-bottom: .5%;
-	font-size: 4rem;
+#m-main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-#m-main p{
-	margin-top: .2%;
-	font-size: 1.5rem;
+#m-main h1 {
+  font-weight: bolder;
+  margin-bottom: 0.5%;
+  font-size: 4rem;
 }
 
-#m-main h1,p{
-	text-align: center;
-	font-family: Bebas Neue;
-	letter-spacing: .1rem;
-	color: white;
+#m-main p {
+  margin-top: 0.2%;
+  font-size: 1.5rem;
 }
 
-#app-sp{
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	margin-top: 7%;
-	text-align: center;
+#m-main h1,
+p {
+  text-align: center;
+  font-family: Bebas Neue;
+  letter-spacing: 0.1rem;
+  color: white;
 }
 
-#app-sp h2{
-	font-family: Questrial;
-	color: white;
+#app-sp {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 7%;
+  text-align: center;
 }
 
-#app-sp .btn-style{
-	width: 8%;
-	height: 45px;
-	border-radius: 1em;
-	font-family: Questrial;
-	font-weight: bolder;
-	font-size: 1rem;
-	color: whitesmoke;
-	background-color: limegreen;
-	margin-top: 1.3%;
+#app-sp h2 {
+  font-family: Questrial;
+  color: white;
 }
 
-#app-sp .btn-style:hover{
-	cursor: pointer;
-	color: black;
-	border: solid;
-	border-color: whitesmoke;
-	transition: all .5s;
+#app-sp .btn-style {
+  width: 8%;
+  height: 45px;
+  border-radius: 1em;
+  font-family: Questrial;
+  font-weight: bolder;
+  font-size: 1rem;
+  color: whitesmoke;
+  background-color: limegreen;
+  margin-top: 1.3%;
 }
 
-#app-sp .input-style{
-	width: 17%;
-	height: 30px;
-	font-family: Questrial;
-	font-size: 1rem;
-	font-weight: bold;
-	text-align: center;
-	border: solid;
-	border-color: black;
-	border-radius: 1em;
+#app-sp .btn-style:hover {
+  cursor: pointer;
+  color: black;
+  border: solid;
+  border-color: whitesmoke;
+  transition: all 0.5s;
 }
 
-label{
-	font-family: Questrial;
-	font-size: 1.2rem;
-	color: white;
-	margin-top: 0.5%;
+#app-sp .input-style {
+  width: 17%;
+  height: 30px;
+  font-family: Questrial;
+  font-size: 1rem;
+  font-weight: bold;
+  text-align: center;
+  border: solid;
+  border-color: black;
+  border-radius: 1em;
 }
 
+label {
+  font-family: Questrial;
+  font-size: 1.2rem;
+  font-weight: bolder;
+  color: white;
+  margin-top: 0.5%;
+  text-align: center;
+}
 
 .radio-btn {
-	margin-top: 2%;
-	color: limegreen;
+  margin-top: 2%;
+  color: limegreen;
 }
 
-#id-resultado{
-	font-family: Questrial;
-	font-size: 4rem;
-	color: white;
-	font-weight: bolder;
+#id-resultado {
+  font-family: Questrial;
+  font-size: 4rem;
+  color: white;
+  font-weight: bolder;
+}
+
+.swal-overlay {
+  background-color: rgba(50, 205, 50, 0.45);
+}
+
+.swal-modal {
+  background-color: black;
+}
+
+.swal-title {
+  font-family: Questrial;
+  color: whitesmoke;
+}
+
+.swal-text {
+  font-family: Questrial;
+  color: whitesmoke;
+}
+
+.swal-button {
+  background-color: limegreen;
 }
