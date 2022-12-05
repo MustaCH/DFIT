@@ -1,0 +1,82 @@
+[
+  {
+    "id": 1,
+    "nombre": "arroz",
+    "cals": 364,
+    "carb": 78.6,
+    "prot": 6.7,
+    "fat": 0.25
+  },
+  {
+    "id": 2,
+    "nombre": "carne de vaca",
+    "cals": 182,
+    "carb": 0,
+    "prot": 20.8,
+    "fat": 0.25
+  },
+  {
+    "id": 3,
+    "nombre": "carne de cerdo",
+    "cals": 276,
+    "carb": 0,
+    "prot": 16.7,
+    "fat": 22.7
+  },
+  {
+    "id": 4,
+    "nombre": "carne de pescado",
+    "cals": 90,
+    "carb": 0,
+    "prot": 19.3,
+    "fat": 0.8
+  },
+  {
+    "id": 5,
+    "nombre": "huevo",
+    "cals": 53,
+    "carb": 1,
+    "prot": 11,
+    "fat": 0.2
+  },
+  {
+    "id": 6,
+    "nombre": "jamon crudo",
+    "cals": 296,
+    "carb": 0,
+    "prot": 25.8,
+    "fat": 20.6
+  },
+  {
+    "id": 7,
+    "nombre": "acelga",
+    "cals": 25,
+    "carb": 4.6,
+    "prot": 2.4,
+    "fat": 0.3
+  },
+  {
+    "id": 8,
+    "nombre": "cebolla",
+    "cals": 38,
+    "carb": 8.7,
+    "prot": 1.5,
+    "fat": 0.1
+  },
+  {
+    "id": 9,
+    "nombre": "lechuga",
+    "cals": 13,
+    "carb": 2.9,
+    "prot": 0.9,
+    "fat": 0.1
+  },
+  {
+    "id": 10,
+    "nombre": "palta",
+    "cals": 162,
+    "carb": 6.4,
+    "prot": 1.8,
+    "fat": 16
+  }
+]

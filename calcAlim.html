@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/index.css" />
+    <link rel="shortcut icon" href="img/favicon.png" />
+    <title>DFit - Calculadora de calorías</title>
+  </head>
+  <body>
+    <main>
+      <!--INTRO-->
+      <div id="m-main">
+        <h1>DESCUBRE LAS CALORÍAS QUE CONTIENE TU COMIDA</h1>
+        <p>
+          Ingresa el nombre del alimento que quieras buscar para ver su cantidad
+          de calorías y de cada macronutriente
+        </p>
+      </div>
+      <!--CIERRE INTRO-->
+      <!--INICIO PROGRAMA-->
+      <div id="API-sp">
+        <h2>Buscar alimento</h2>
+        <input
+          type="text"
+          name="n-cm"
+          id="n-al"
+          placeholder="Nombre del alimento"
+          class="input-style"
+        />
+        <button class="btn-style" id="buscar">BUSCAR</button>
+
+        <div id="contenedor"></div>
+      </div>
+      <!--CIERRE PROGRAMA-->
+    </main>
+    <script src="./js/calcAlim.js"></script>
+  </body>
+</html>

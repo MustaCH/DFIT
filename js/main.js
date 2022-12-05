@@ -474,6 +474,9 @@ function mensajeFinal() {
   app.appendChild(btn_finalizar);
 }
 
+let btn_API = document.createElement("button");
+let contAPI = document.createElement("h3");
+
 btn_finalizar.addEventListener("click", () => {
   guide_1.remove();
   guide_7.remove();
@@ -482,4 +485,17 @@ btn_finalizar.addEventListener("click", () => {
   let greetings = document.createElement("h2");
   greetings.innerText = "GRACIAS POR USAR DFIT!";
   app.appendChild(greetings);
+  contAPI.innerText =
+    "Ahora que sabes cuales son tus calorías objetivo, avanza al siguiente paso y calcula tus calorías según lo que estás comiendo";
+  contAPI.id = "contAPItext";
+  app.appendChild(contAPI);
+  btn_API.innerText = "SIGUIENTE PASO";
+  btn_API.className = "btn-style";
+  app.appendChild(btn_API);
 });
+
+btn_API.addEventListener("click", goToAPI);
+
+function goToAPI() {
+  location.href = "calcAlim.html";
+}

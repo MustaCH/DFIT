@@ -1,8 +1,10 @@
 body {
-  background-color: black;
+  background: url(../img/fondo.jpg);
 }
 
-h4 {
+h4,
+h3,
+h2 {
   font-family: Questrial;
   color: whitesmoke;
   font-weight: lighter;
@@ -48,7 +50,7 @@ p {
   color: white;
 }
 
-#app-sp .btn-style {
+.btn-style {
   width: 8%;
   height: 45px;
   border-radius: 1em;
@@ -60,7 +62,7 @@ p {
   margin-top: 1.3%;
 }
 
-#app-sp .btn-style:hover {
+.btn-style:hover {
   cursor: pointer;
   color: black;
   border: solid;
@@ -68,7 +70,7 @@ p {
   transition: all 0.5s;
 }
 
-#app-sp .input-style {
+.input-style {
   width: 17%;
   height: 30px;
   font-family: Questrial;
@@ -121,4 +123,48 @@ label {
 
 .swal-button {
   background-color: limegreen;
+}
+
+#contAPItext {
+  width: 30%;
+}
+
+#API-sp {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-self: center;
+  margin-top: 5%;
+}
+
+#contenedor {
+  margin-top: 5%;
+  width: 40%;
+}
+
+.card {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  background-color: whitesmoke;
+  border-radius: 1em;
+  font-family: Questrial;
+  color: black;
+}
+
+.char {
+  display: flex;
+  flex-direction: column;
+  margin: 1% 0% 1% 0%;
+  text-align: center;
+}
+
+.char h2 {
+  color: black;
+}
+
+.char p {
+  color: black;
+  font-family: Questrial;
+  font-size: 1.1rem;
 }
