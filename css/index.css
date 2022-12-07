@@ -4,12 +4,46 @@ body {
 
 h4,
 h3,
-h2 {
+h2,
+a {
   font-family: Questrial;
   color: whitesmoke;
   font-weight: lighter;
   margin-top: 0.2%;
   margin-bottom: 0%;
+}
+
+nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 1% 5% 0% 5%;
+  align-content: center;
+  margin-bottom: 1%;
+}
+
+#logo-nav img {
+  width: 15%;
+}
+
+#navig {
+  display: flex;
+  flex-direction: row;
+  width: 60%;
+}
+
+#navig li {
+  list-style-type: none;
+  margin-right: 5%;
+}
+
+#navig li a {
+  text-decoration: none;
+  font-size: 1.1rem;
+}
+
+#selected {
+  color: limegreen;
 }
 
 #m-main {
@@ -168,4 +202,8 @@ label {
   color: black;
   font-family: Questrial;
   font-size: 1.1rem;
+}
+
+.tenor-gif-embed a {
+  width: 10%;
 }
