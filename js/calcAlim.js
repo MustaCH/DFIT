@@ -31,17 +31,8 @@ function crearCard(array) {
 
 function find_ali(array) {
   const alimento = inpt_ali.value.toLowerCase();
-  return array.filter((item) => item.nombre === alimento);
+  return array.filter((item) => item.nombre.includes(alimento));
 }
-
-btn_buscar.addEventListener("click", () => {
-  fetch("data/alimentos.json")
-    .then((res) => res.json())
-    .then((data) => {
-      const filtrado = find_ali(data);
-      crearCard(filtrado);
-    });
-});
 
 btn_buscar.addEventListener("click", () => {
   fetch("data/alimentos.json")
